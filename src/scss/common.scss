@@ -1,0 +1,95 @@
+// Заголовки, общие БЄМ блоки и проче...
+/*==============BTN======================*/
+.btn {
+   padding: rem(14) rem(32);
+   color: $whiteColor !important;
+   background: $btnColor;
+   border-radius: 6px;
+   font-size: rem(16);
+   line-height: math.div(16, 12);
+   font-weight: bold;
+   display: inline-block;
+   &_outline {
+      padding: rem(15) rem(32);
+      border: 1px solid $btnColor;
+      color: $btnColor;
+      background: transparent;
+      border-radius: 6px;
+      font-size: rem(16);
+      &:hover {
+         color: $whiteColor;
+         background: $btnColor;
+         transition: all 500ms ease;
+      }
+   }
+   &:hover {
+      transition: all 500ms ease;
+      background: #920e2a;
+   }
+   @media (max-width: $mobile) {
+      padding: 10px 22px;
+   }
+}
+
+/*==============BRANDS======================*/
+.info {
+   background: $whiteColor;
+
+   @include adaptiveValue('padding-top', 100, 20);
+   @include adaptiveValue('padding-bottom', 100, 20);
+
+   // .info__container
+   &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+   // .info__text
+   &__text {
+      font-weight: 700;
+      @include adaptiveValue('font-size', 36, 10);
+      line-height: math.div(57, 36);
+      color: $blueColor;
+      span {
+         color: $btnColor;
+      }
+      @include adaptiveValue('margin-bottom', 60, 20);
+   }
+
+   .info {
+      // .info__icons
+      &__icons {
+         display: flex;
+         flex-wrap: wrap;
+         @include adaptiveValue('gap', 40, 10);
+         justify-content: center;
+      }
+
+      // .info__icon
+      &__icon {
+         img {
+            @media (max-width: $tablet) {
+               @include adaptiveValue('max-width', 120, 60);
+            }
+         }
+      }
+   }
+}
+/*======TITLE=======*/
+.section {
+   &__title {
+      font-weight: 700;
+      @include adaptiveValue('font-size', 44, 20);
+      line-height: math.div(57, 44);
+      color: $blueColor;
+      @include adaptiveValue('margin-bottom', 16, 8);
+   }
+   &__small {
+      font-weight: 400;
+      @include adaptiveValue('font-size', 16, 14);
+      line-height: math.div(27, 16);
+      color: $grayColor;
+      @include adaptiveValue('margin-bottom', 97, 8);
+   }
+}

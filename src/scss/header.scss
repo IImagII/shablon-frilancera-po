@@ -1,0 +1,154 @@
+//====================================================================================================
+/*=======MENU=======*/
+.header {
+   background: linear-gradient(
+      252.91deg,
+      #e3e7f6 3.68%,
+      rgba(227, 231, 246, 0) 97.82%
+   ); //основной цвет
+   overflow: hidden;
+   // .header__container
+   &__container {
+      min-height: 50px;
+   }
+}
+.navbar {
+   //разнесли по сторонам
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   padding-top: 15px;
+   padding-bottom: 15px;
+   align-items: center; //выравниваем по середине
+   &__logo {
+      img {
+         max-width: 120px; // размер логотипа
+         @media (max-width: $mobile) {
+            max-width: 100px; // размер логотипа
+         }
+      }
+   }
+}
+.menu {
+   &__body {
+      //туту мы делаем адаптиное меню фон где оно будет отображаться
+      @media (max-width: $mobile) {
+         position: fixed;
+         top: 0;
+         left: -100%; //для того чтобы меню уехало как бы
+         width: 100%; //это для того чтобы оно занимало все ширину и высоту когдасработаетадаптив
+         height: 100%;
+         overflow: auto;
+         background-color: rgb(179, 181, 207);
+         z-index: 2;
+         //это мы устанавливаем отступы адаптива меню
+         padding: rem(90) rem(15) rem(30) rem(15);
+         transition: all 0.3s ease 0s;
+         //верстаем стили  для открытия и закрытия именно интерактива
+         //сейчас мы отверсткает чтобы при скроле менб красиво ходило вверх и вниз и єто получается типа как header в меню при адаптации
+         .menu-open & {
+            left: 0; //для того чтобы меню возвращалось при нажатии
+            &::before {
+               left: 0;
+            }
+         }
+      }
+   }
+
+   // .menu__list - класс самого меню
+   &__list {
+      align-items: center; // по центру
+      @include adaptiveValue('gap', 45, 15);
+      //это тоже нужно для адаптива чтобы ссылки выстроились в ряд
+      @media (min-width: $mobile) {
+         display: flex;
+         flex-wrap: wrap;
+         row-gap: rem(5);
+      }
+   }
+
+   // .menu__item
+   &__item {
+      // @include adaptiveValue('margin-left', 20, 15);
+      //так мы выравниваем ссылки по центру
+      text-align: center;
+      @media (max-width: $mobile) {
+         &:not(:last-child) {
+            margin-bottom: rem(20); // растояние между элементами
+         }
+      }
+   }
+
+   // .menu__link
+   &__link {
+      font-size: rem(18); //снипед fz разворачивает такую конструкцию с rem
+      line-height: math.div(
+         19,
+         18
+      ); //снипед lh будет такая конструкция 19-это сам line-height 16-это font-size
+      color: $grayColor; // цвет меню
+      //снипед hhv вызовет актив меню
+
+      @media (any-hover: hover) {
+         &:hover {
+            color: $btnColor;
+         }
+      }
+      //туту мы адаптируем ссылки когда менб будет для мобильных устройств
+      @media (max-width: $mobile) {
+         color: #fff;
+         font-size: rem(22);
+      }
+   }
+}
+
+//====================================================================================================
+
+//Burger
+.icon-menu {
+   display: none;
+   @media (max-width: $mobile) {
+      display: block;
+      position: relative;
+      width: rem(30);
+      height: rem(18);
+      cursor: pointer;
+      z-index: 5;
+      span,
+      &::before,
+      &::after {
+         content: '';
+         transition: all 0.3s ease 0s;
+         right: 0;
+         position: absolute;
+         width: 100%;
+         height: rem(2);
+         background-color: $btnColor;
+      }
+      &::before {
+         top: 0;
+      }
+      &::after {
+         bottom: 0;
+      }
+      span {
+         top: calc(50% - rem(1));
+      }
+      .menu-open & {
+         span {
+            width: 0;
+         }
+         &::before,
+         &::after {
+         }
+         &::before {
+            top: calc(50% - rem(1));
+            transform: rotate(-45deg);
+         }
+         &::after {
+            bottom: calc(50% - rem(1));
+            transform: rotate(45deg);
+         }
+      }
+   }
+}

@@ -1,0 +1,73 @@
+.innovations {
+   @include adaptiveValue('padding-top', 120, 40);
+   @include adaptiveValue('padding-bottom', 67, 20);
+   // .innovations__container
+   &__container {
+   }
+
+   // .innovations__item
+   &__item {
+   }
+
+   // .innovations__title
+   &__title {
+      text-align: center;
+      font-weight: 700;
+      @include adaptiveValue('font-size', 44, 25);
+      line-height: math.div(57, 44);
+      color: $blueColor;
+      margin-bottom: 16px;
+   }
+
+   // .innovations__text
+   &__text {
+      text-align: center;
+      @include adaptiveValue('font-size', 16, 12);
+      line-height: math.div(27, 16);
+      color: $grayColor;
+      @include adaptiveValue('margin-bottom', 125, 30);
+   }
+}
+.main-page {
+   // .main-page__slider
+   &__slider {
+   }
+
+   // .main-page__wrapper
+   &__wrapper {
+   }
+
+   // .main-page__slide
+   &__slide {
+   }
+}
+.swiper {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+   // .swiper-slide__img
+   &__img {
+      text-align: center; // отцентрована картинк
+      height: 150px;
+      img {
+         max-width: 100%; // можно уменьшать ся изображению
+      }
+   }
+}
+
+.swiper-arrow-prev {
+   img {
+      max-width: 24px;
+      transform: rotate(-180deg);
+   }
+}
+.swiper-arrow-next {
+   img {
+      max-width: 24px;
+   }
+}
+//класс для нактивной стрелки
+.swiper-button-disabled {
+   opacity: 0.7;
+}
